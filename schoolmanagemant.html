@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शिक्षक पोर्टल</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .tab-container {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            border: none;
+            background: none;
+        }
+        
+        .tab:hover {
+            background: #e9ecef;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            font-weight: bold;
+        }
+        
+        .content {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 0.5s;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #764ba2;
+        }
+        
+        .marks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .marks-input {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .homework-list, .result-list {
+            margin-top: 20px;
+        }
+        
+        .item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .item h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .item p {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        .download-btn {
+            background: #28a745;
+            margin-top: 10px;
+        }
+        
+        .download-btn:hover {
+            background: #218838;
+        }
+        
+        .student-login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .result-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 20px;
+        }
+        
+        .marks-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .marks-table th, .marks-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .marks-table th {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #667eea;
+            margin-top: 20px;
+            text-align: right;
+        }
+        
+        .grade {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 1.3em;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>शिक्षक पोर्टल</h1>
+            <p>होमवर्क और परिणाम प्रबंधन प्रणाली</p>
+        </div>
+        
+        <div class="tab-container">
+            <button class="tab active" onclick="showTab('teacher')">शिक्षक पैनल</button>
+            <button class="tab" onclick="showTab('student')">छात्र लॉगिन</button>
+        </div>
+        
+        <div id="teacher" class="content active">
+            <h2>शिक्षक डैशबोर्ड</h2>
+            
+            <div class="tab-container">
+                <button class="tab active" onclick="showSubTab('homework')">होमवर्क जारी करें</button>
+                <button class="tab" onclick="showSubTab('result')">परिणाम जारी करें</button>
+            </div>
+            
+            <div id="homework" class="content active">
+                <h3>होमवर्क जारी करें</h3>
+                <form id="homeworkForm">
+                    <div class="form-group">
+                        <label>कक्षा:</label>
+                        <select id="homeworkClass" required>
+                            <option value="">कक्षा चुनें</option>
+                            <option value="6">कक्षा 6</option>
+                            <option value="7">कक्षा 7</option>
+                            <option value="8">कक्षा 8</option>
+                            <option value="9">कक्षा 9</option>
+                            <option value="10">कक्षा 10</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>विषय:</label>
+                        <select id="homeworkSubject" required>
+                            <option value="">विषय चुनें</option>
+                            <option value="हिंदी">हिंदी</option>
+                            <option value="अंग्रेजी">अंग्रेजी</option>
+                            <option value="संस्कृत">संस्कृत</option>
+                            <option value="गणित">गणित</option>
+                            <option value="विज्ञान">विज्ञान</option>
+                            <option value="सामाजिक विज्ञान">सामाजिक विज्ञान</option>
+                            <option value="कृति">कृति</option>
+                            <option value="कौशल बोध">कौशल बोध</option>
+                            <option value="वैकल्पिक 1">वैकल्पिक 1</option>
+                            <option value="वैकल्पिक 2">वैकल्पिक 2</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>होमवर्क विवरण:</label>
+                        <textarea id="homeworkText" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>समय सीमा:</label>
+                        <input type="date" id="homeworkDeadline" required>
+                    </div>
+                    
+                    <button type="submit">होमवर्क जारी करें</button>
+                </form>
+                
+                <div class="homework-list">
+                    <h4>जारी किए गए होमवर्क</h4>
+                    <div id="homeworkList"></div>
+                </div>
+            </div>
+            
+            <div id="result" class="content">
+                <h3>परिणाम जारी करें</h3>
+                <form id="resultForm">
+                    <div class="form-group">
+                        <label>छात्र का रोल नंबर:</label>
+                        <input type="text" id="studentRoll" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>छात्र का नाम:</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>कक्षा:</label>
+                        <select id="resultClass" required>
+                            <option value="">कक्षा चुनें</option>
+                            <option value="6">कक्षा 6</option>
+                            <option value="7">कक्षा 7</option>
+                            <option value="8">कक्षा 8</option>
+                            <option value="9">कक्षा 9</option>
+                            <option value="10">कक्षा 10</option>
+                        </select>
+                    </div>
+                    
+                    <div class="marks-grid">
+                        <div class="marks-input">
+                            <label>हिंदी:</label>
+                            <input type="number" id="hindi" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>अंग्रेजी:</label>
+                            <input type="number" id="english" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>संस्कृत:</label>
+                            <input type="number" id="sanskrit" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>गणित:</label>
+                            <input type="number" id="maths" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>विज्ञान:</label>
+                            <input type="number" id="science" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>सामाजिक विज्ञान:</label>
+                            <input type="number" id="social" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>कृति:</label>
+                            <input type="number" id="kriti" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>कौशल बोध:</label>
+                            <input type="number" id="skill" min="0" max="100" required>
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>वैकल्पिक 1:</label>
+                            <input type="text" id="optional1Name" placeholder="विषय का नाम">
+                            <input type="number" id="optional1" min="0" max="100">
+                        </div>
+                        
+                        <div class="marks-input">
+                            <label>वैकल्पिक 2:</label>
+                            <input type="text" id="optional2Name" placeholder="विषय का नाम">
+                            <input type="number" id="optional2" min="0" max="100">
+                        </div>
+                    </div>
+                    
+                    <button type="submit">परिणाम जारी करें</button>
+                </form>
+            </div>
+        </div>
+        
+        <div id="student" class="content">
+            <h2>छात्र पोर्टल</h2>
+            
+            <div class="student-login-form">
+                <h3>छात्र लॉगिन</h3>
+                <form id="studentLoginForm">
+                    <div class="form-group">
+                        <label>रोल नंबर:</label>
+                        <input type="text" id="studentRollLogin" required>
+                    </div>
+                    
+                    <button type="submit">लॉगिन करें</button>
+                </form>
+            </div>
+            
+            <div id="studentDashboard" style="display: none;">
+                <h3>मेरा डैशबोर्ड</h3>
+                
+                <div class="tab-container">
+                    <button class="tab active" onclick="showStudentTab('homework')">मेरा होमवर्क</button>
+                    <button class="tab" onclick="showStudentTab('result')">मेरा परिणाम</button>
+                </div>
+                
+                <div id="student-homework" class="content active">
+                    <h4>मेरा होमवर्क</h4>
+                    <div id="studentHomeworkList"></div>
+                </div>
+                
+                <div id="student-result" class="content">
+                    <h4>मेरा परिणाम</h4>
+                    <div id="studentResultCard"></div>
+                    <button class="download-btn" onclick="downloadResult()">परिणाम डाउनलोड करें (PDF)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // डेटा स्टोर
+        let homeworks = JSON.parse(localStorage.getItem('homeworks')) || [];
+        let results = JSON.parse(localStorage.getItem('results')) || [];
+        
+        // टैब स्विचिंग
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => {
+                if (content.id === 'teacher' || content.id === 'student') {
+                    content.classList.remove('active');
+                }
+            });
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        function showSubTab(tabName) {
+            const tabs = document.querySelectorAll('#teacher .tab');
+            const contents = document.querySelectorAll('#teacher .content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        function showStudentTab(tabName) {
+            const tabs = document.querySelectorAll('#studentDashboard .tab');
+            const contents = document.querySelectorAll('#studentDashboard .content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById('student-' + tabName).classList.add('active');
+        }
+        
+        // होमवर्क फॉर्म
+        document.getElementById('homeworkForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const homework = {
+                class: document.getElementById('homeworkClass').value,
+                subject: document.getElementById('homeworkSubject').value,
+                text: document.getElementById('homeworkText').value,
+                deadline: document.getElementById('homeworkDeadline').value,
+                date: new Date().toLocaleDateString()
+            };
+            
+            homeworks.push(homework);
+            localStorage.setItem('homeworks', JSON.stringify(homeworks));
+            
+            this.reset();
+            displayHomeworks();
+            alert('होमवर्क जारी कर दिया गया है!');
+        });
+        
+        // परिणाम फॉर्म
+        document.getElementById('resultForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const result = {
+                roll: document.getElementById('studentRoll').value,
+                name: document.getElementById('studentName').value,
+                class: document.getElementById('resultClass').value,
+                marks: {
+                    hindi: parseInt(document.getElementById('hindi').value),
+                    english: parseInt(document.getElementById('english').value),
+                    sanskrit: parseInt(document.getElementById('sanskrit').value),
+                    maths: parseInt(document.getElementById('maths').value),
+                    science: parseInt(document.getElementById('science').value),
+                    social: parseInt(document.getElementById('social').value),
+                    kriti: parseInt(document.getElementById('kriti').value),
+                    skill: parseInt(document.getElementById('skill').value),
+                    optional1: {
+                        name: document.getElementById('optional1Name').value,
+                        marks: parseInt(document.getElementById('optional1').value) || 0
+                    },
+                    optional2: {
+                        name: document.getElementById('optional2Name').value,
+                        marks: parseInt(document.getElementById('optional2').value) || 0
+                    }
+                }
+            };
+            
+            // पुराने परिणाम को अपडेट करें
+            const index = results.findIndex(r => r.roll === result.roll);
+            if (index > -1) {
+                results[index] = result;
+            } else {
+                results.push(result);
+            }
+            
+            localStorage.setItem('results', JSON.stringify(results));
+            
+            this.reset();
+            alert('परिणाम जारी कर दिया गया है!');
+        });
+        
+        // छात्र लॉगिन
+        document.getElementById('studentLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const roll = document.getElementById('studentRollLogin').value;
+            const studentResult = results.find(r => r.roll === roll);
+            
+            if (!studentResult) {
+                alert('इस रोल नंबर का कोई परिणाम नहीं मिला!');
+                return;
+            }
+            
+            document.querySelector('.student-login-form').style.display = 'none';
+            document.getElementById('studentDashboard').style.display = 'block';
+            
+            displayStudentHomework(studentResult.class);
+            displayStudentResult(studentResult);
+        });
+        
+        // होमवर्क डिस्प्ले
+        function displayHomeworks() {
+            const homeworkList = document.getElementById('homeworkList');
+            homeworkList.innerHTML = '';
+            
+            homeworks.forEach(homework => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `
+                    <h4>कक्षा ${homework.class} - ${homework.subject}</h4>
+                    <p><strong>होमवर्क:</strong> ${homework.text}</p>
+                    <p><strong>समय सीमा:</strong> ${homework.deadline}</p>
+                    <p><strong>जारी करने की तिथि:</strong> ${homework.date}</p>
+                `;
+                homeworkList.appendChild(div);
+            });
+        }
+        
+        // छात्र होमवर्क डिस्प्ले
+        function displayStudentHomework(studentClass) {
+            const studentHomeworkList = document.getElementById('studentHomeworkList');
+            studentHomeworkList.innerHTML = '';
+            
+            const classHomeworks = homeworks.filter(h => h.class === studentClass);
+            
+            classHomeworks.forEach(homework => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `
+                    <h4>${homework.subject}</h4>
+                    <p><strong>होमवर्क:</strong> ${homework.text}</p>
+                    <p><strong>समय सीमा:</strong> ${homework.deadline}</p>
+                `;
+                studentHomeworkList.appendChild(div);
+            });
+            
+            if (classHomeworks.length === 0) {
+                studentHomeworkList.innerHTML = '<p>कोई होमवर्क नहीं मिला।</p>';
+            }
+        }
+        
+        // छात्र परिणाम डिस्प्ले
+        function displayStudentResult(studentResult) {
+            const studentResultCard = document.getElementById('studentResultCard');
+            
+            const total = Object.values(studentResult.marks).reduce((sum, mark) => {
+                if (typeof mark === 'object') {
+                    return sum + (mark.marks || 0);
+                }
+                return sum + mark;
+            }, 0);
+            
+            const percentage = (total / 800 * 100).toFixed(2);
+            let grade = '';
+            
+            if (percentage >= 90) grade = 'A+';
+            else if (percentage >= 80) grade = 'A';
+            else if (percentage >= 70) grade = 'B+';
+            else if (percentage >= 60) grade = 'B';
+            else if (percentage >= 50) grade = 'C';
+            else grade = 'D';
+            
+            studentResultCard.innerHTML = `
+                <div class="result-card" id="resultToDownload">
+                    <div class="result-header">
+                        <h2>परिणाम कार्ड</h2>
+                        <h3>${studentResult.name}</h3>
+                        <p>रोल नंबर: ${studentResult.roll} | कक्षा: ${studentResult.class}</p>
+                    </div>
+                    
+                    <table class="marks-table">
+                        <tr>
+                            <th>विषय</th>
+                            <th>अंक</th>
+                        </tr>
+                        <tr>
+                            <td>हिंदी</td>
+                            <td>${studentResult.marks.hindi}</td>
+                        </tr>
+                        <tr>
+                            <td>अंग्रेजी</td>
+                            <td>${studentResult.marks.english}</td>
+                        </tr>
+                        <tr>
+                            <td>संस्कृत</td>
+                            <td>${studentResult.marks.sanskrit}</td>
+                        </tr>
+                        <tr>
+                            <td>गणित</td>
+                            <td>${studentResult.marks.maths}</td>
+                        </tr>
+                        <tr>
+                            <td>विज्ञान</td>
+                            <td>${studentResult.marks.science}</td>
+                        </tr>
+                        <tr>
+                            <td>सामाजिक विज्ञान</td>
+                            <td>${studentResult.marks.social}</td>
+                        </tr>
+                        <tr>
+                            <td>कृति</td>
+                            <td>${studentResult.marks.kriti}</td>
+                        </tr>
+                        <tr>
+                            <td>कौशल बोध</td>
+                            <td>${studentResult.marks.skill}</td>
+                        </tr>
+                        ${studentResult.marks.optional1.name ? `
+                        <tr>
+                            <td>${studentResult.marks.optional1.name}</td>
+                            <td>${studentResult.marks.optional1.marks}</td>
+                        </tr>` : ''}
+                        ${studentResult.marks.optional2.name ? `
+                        <tr>
+                            <td>${studentResult.marks.optional2.name}</td>
+                            <td>${studentResult.marks.optional2.marks}</td>
+                        </tr>` : ''}
+                    </table>
+                    
+                    <div class="total">कुल अंक: ${total}/800</div>
+                    <div class="total">प्रतिशत: ${percentage}%</div>
+                    <div class="grade">ग्रेड: ${grade}</div>
+                </div>
+            `;
+        }
+        
+        // परिणाम डाउनलोड
+        async function downloadResult() {
+            const element = document.getElementById('resultToDownload');
+            const canvas = await html2canvas(element);
+            const imgData = canvas.toDataURL('image/png');
+            
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            
+            const imgWidth = 210;
+            const pageHeight = 295;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+            
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+            
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+            
+            pdf.save('result-card.pdf');
+        }
+        
+        // पेज लोड होने पर होमवर्क डिस्प्ले करें
+        displayHomeworks();
+    </script>
+</body>
+</html>
