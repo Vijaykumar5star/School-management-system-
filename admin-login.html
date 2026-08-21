@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login - Exam Key Club</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#667eea,#764ba2);
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:400px;
+  background:white;
+  padding:35px 30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.logo{
+  text-align:center;
+  font-size:50px;
+  margin-bottom:10px;
+}
+
+h1{
+  text-align:center;
+  color:#222;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  text-align:center;
+  color:#777;
+  margin-bottom:25px;
+}
+
+label{
+  display:block;
+  margin:15px 0 7px;
+  font-weight:bold;
+  color:#333;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#667eea;
+}
+
+button{
+  width:100%;
+  margin-top:25px;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:#667eea;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#5568d8;
+}
+
+#error{
+  color:#d32f2f;
+  text-align:center;
+  margin-top:15px;
+  display:none;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:20px;
+  color:#667eea;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+  <div class="logo">🔐</div>
+
+  <h1>Admin Login</h1>
+
+  <p class="subtitle">
+    Exam Key Club Admin Panel
+  </p>
+
+  <form onsubmit="login(event)">
+
+    <label>Username</label>
+    <input
+      type="text"
+      id="username"
+      placeholder="Enter username"
+      required
+    >
+
+    <label>Password</label>
+    <input
+      type="password"
+      id="password"
+      placeholder="Enter password"
+      required
+    >
+
+    <button type="submit">
+      🔑 Login
+    </button>
+
+  </form>
+
+  <p id="error">
+    ❌ Username या Password गलत है।
+  </p>
+
+  <a class="back" href="student.html">
+    ← Back to Student Page
+  </a>
+
+</div>
+
+<script>
+
+function login(event){
+
+  event.preventDefault();
+
+  const username =
+    document.getElementById("username").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  /*
+   * अभी Demo Login
+   * बाद में इसे Firebase/Supabase Authentication
+   * से secure किया जाएगा।
+   */
+
+  if(username === "admin" && password === "1234"){
+
+    sessionStorage.setItem("adminLoggedIn","true");
+
+    window.location.href = "admin.html";
+
+  }else{
+
+    document.getElementById("error").style.display = "block";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
