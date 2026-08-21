@@ -270,3 +270,373 @@ function buyCourse(){
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>English Pedagogy Course - Exam Key Club</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+.header{
+  background:linear-gradient(135deg,#1557d6,#0b3fa8);
+  color:white;
+  padding:25px 18px;
+  text-align:center;
+}
+
+.header h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+.header p{
+  font-size:16px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.course-title{
+  font-size:28px;
+  color:#1557d6;
+  margin-bottom:12px;
+}
+
+.price{
+  font-size:32px;
+  font-weight:bold;
+  margin:20px 0;
+  color:#111827;
+}
+
+.old-price{
+  text-decoration:line-through;
+  color:#777;
+  font-size:18px;
+  margin-left:8px;
+}
+
+.buy-btn{
+  display:block;
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:#16a34a;
+  color:white;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.buy-btn:hover{
+  background:#12833b;
+}
+
+.module{
+  padding:14px;
+  margin:10px 0;
+  background:#f1f5ff;
+  border-left:5px solid #1557d6;
+  border-radius:8px;
+}
+
+.module strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.highlight{
+  background:#fff7df;
+  border-left:5px solid #f59e0b;
+  padding:15px;
+  border-radius:8px;
+  margin-top:15px;
+}
+
+.footer{
+  text-align:center;
+  padding:25px;
+  color:#666;
+  font-size:14px;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  z-index:1000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.65);
+}
+
+.modal-box{
+  background:white;
+  width:90%;
+  max-width:450px;
+  margin:15% auto;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+}
+
+.modal-box h2{
+  color:#1557d6;
+  margin-bottom:15px;
+}
+
+.modal-box input{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+.payment-btn{
+  width:100%;
+  padding:14px;
+  background:#1557d6;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-size:18px;
+  margin-top:10px;
+}
+
+.close-btn{
+  margin-top:12px;
+  padding:10px 20px;
+  background:#ddd;
+  border:none;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>EXAM KEY CLUB</h1>
+  <p>Teacher Recruitment • CTET • CGTET</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+
+    <h2 class="course-title">
+      English Pedagogy
+    </h2>
+
+    <p>
+      CTET, CGTET और Teacher Recruitment परीक्षाओं के लिए
+      English Pedagogy का सम्पूर्ण अध्ययन कोर्स।
+    </p>
+
+    <div class="price">
+      ₹99
+      <span class="old-price">₹299</span>
+    </div>
+
+    <button class="buy-btn" onclick="buyCourse()">
+      ₹99 Buy Now
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>📚 Course में क्या मिलेगा?</h2>
+
+    <div class="module">
+      <strong>01. Principles of Language Teaching</strong>
+      भाषा शिक्षण के प्रमुख सिद्धांत एवं अवधारणाएँ
+    </div>
+
+    <div class="module">
+      <strong>02. Phonics & Phonemic Awareness</strong>
+      Phonics, phonemes और phonemic awareness
+    </div>
+
+    <div class="module">
+      <strong>03. Functions of Language</strong>
+      भाषा के कार्य एवं बच्चों द्वारा भाषा का उपयोग
+    </div>
+
+    <div class="module">
+      <strong>04. Language Skills</strong>
+      Listening, Speaking, Reading और Writing
+    </div>
+
+    <div class="module">
+      <strong>05. Grammar in Language Learning</strong>
+      भाषा सीखने में Grammar की भूमिका
+    </div>
+
+    <div class="module">
+      <strong>06. Diverse Classroom</strong>
+      विविध कक्षा में भाषा शिक्षण की चुनौतियाँ
+    </div>
+
+    <div class="module">
+      <strong>07. Language Difficulties & Errors</strong>
+      भाषा संबंधी कठिनाइयाँ, Errors और Disorders
+    </div>
+
+    <div class="module">
+      <strong>08. Language Assessment</strong>
+      Speaking, Listening, Reading और Writing का मूल्यांकन
+    </div>
+
+    <div class="highlight">
+      ⭐ परीक्षा-उपयोगी Notes + Concept Explanation +
+      MCQs/PYQs को ध्यान में रखकर तैयार किया जाएगा।
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <h2>🎯 यह Course किसके लिए है?</h2>
+
+    <p style="margin-top:12px;line-height:1.8;">
+      ✔ CTET अभ्यर्थी<br>
+      ✔ CGTET अभ्यर्थी<br>
+      ✔ Teacher Recruitment की तैयारी करने वाले अभ्यर्थी<br>
+      ✔ English Pedagogy को मजबूत करने वाले विद्यार्थी
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="footer">
+  © 2026 Exam Key Club
+</div>
+
+
+<!-- BUY NOW MODAL -->
+
+<div id="paymentModal" class="modal">
+
+  <div class="modal-box">
+
+    <h2>English Pedagogy</h2>
+
+    <p>
+      Course Price: <strong>₹99</strong>
+    </p>
+
+    <br>
+
+    <input
+      type="text"
+      id="studentName"
+      placeholder="अपना नाम दर्ज करें"
+    >
+
+    <input
+      type="tel"
+      id="studentMobile"
+      placeholder="मोबाइल नंबर"
+      maxlength="10"
+    >
+
+    <button
+      class="payment-btn"
+      onclick="startPayment()">
+      Proceed to Payment ₹99
+    </button>
+
+    <button
+      class="close-btn"
+      onclick="closePayment()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function buyCourse(){
+
+  document.getElementById("paymentModal").style.display="block";
+
+}
+
+function closePayment(){
+
+  document.getElementById("paymentModal").style.display="none";
+
+}
+
+function startPayment(){
+
+  let name =
+  document.getElementById("studentName").value.trim();
+
+  let mobile =
+  document.getElementById("studentMobile").value.trim();
+
+  if(name===""){
+
+    alert("कृपया अपना नाम दर्ज करें।");
+    return;
+
+  }
+
+  if(mobile.length!==10){
+
+    alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");
+    return;
+
+  }
+
+  alert(
+    "Payment System अगले चरण में जोड़ा जाएगा।\n\n"+
+    "Student: "+name+
+    "\nMobile: "+mobile+
+    "\nCourse Price: ₹99"
+  );
+
+}
+
+</script>
+
+</body>
+</html>
