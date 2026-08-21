@@ -219,3 +219,426 @@ function buyCourse(name,price){
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exam Key Club - Student</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, "Noto Sans Devanagari", sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+/* HEADER */
+header{
+    background:#1455d9;
+    color:white;
+    padding:18px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:800;
+}
+
+.login-btn{
+    background:white;
+    color:#1455d9;
+    border:none;
+    padding:13px 23px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(135deg,#1455d9,#3978ec);
+    color:white;
+    padding:75px 7%;
+}
+
+.hero h1{
+    font-size:48px;
+    line-height:1.2;
+    max-width:800px;
+    margin-bottom:22px;
+}
+
+.hero p{
+    font-size:21px;
+    line-height:1.7;
+    max-width:850px;
+}
+
+/* COURSES */
+.courses-section{
+    padding:45px 5%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    font-size:38px;
+    margin-bottom:30px;
+}
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:25px;
+}
+
+/* COURSE CARD */
+.course-card{
+    background:white;
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.25s;
+}
+
+.course-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(0,0,0,0.12);
+}
+
+.badge{
+    display:inline-block;
+    background:#e8f0ff;
+    color:#1455d9;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.course-card h2{
+    font-size:27px;
+    margin-bottom:15px;
+}
+
+.course-card p{
+    color:#667085;
+    font-size:17px;
+    line-height:1.6;
+    min-height:80px;
+}
+
+.price{
+    font-size:30px;
+    font-weight:bold;
+    margin:22px 0;
+}
+
+.view-btn{
+    width:100%;
+    background:#1455d9;
+    color:white;
+    border:none;
+    padding:16px;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.view-btn:hover{
+    background:#0d43b4;
+}
+
+/* FOOTER */
+footer{
+    background:#101828;
+    color:white;
+    text-align:center;
+    padding:30px 15px;
+    margin-top:30px;
+}
+
+footer p{
+    margin:6px;
+    color:#d0d5dd;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    header{
+        padding:15px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .login-btn{
+        padding:11px 14px;
+        font-size:14px;
+    }
+
+    .hero{
+        padding:50px 25px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .courses-section{
+        padding:35px 18px;
+    }
+
+    .section-title{
+        font-size:30px;
+    }
+
+    .course-card{
+        padding:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo">
+        EXAM KEY CLUB
+    </div>
+
+    <button class="login-btn" onclick="studentLogin()">
+        Student Login
+    </button>
+
+</header>
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <h1>
+        Teacher Recruitment की तैयारी अब आसान
+    </h1>
+
+    <p>
+        CTET, CGTET और Teacher Recruitment परीक्षाओं के लिए
+        गुणवत्तापूर्ण अध्ययन सामग्री और Courses।
+    </p>
+
+</section>
+
+
+<!-- COURSES -->
+<section class="courses-section">
+
+    <h2 class="section-title">
+        📚 Available Courses
+    </h2>
+
+
+    <div class="course-grid">
+
+
+        <!-- COURSE 1 -->
+        <div class="course-card">
+
+            <span class="badge">
+                ENGLISH PEDAGOGY
+            </span>
+
+            <h2>
+                English Pedagogy
+            </h2>
+
+            <p>
+                Teacher Recruitment, CTET और CGTET के लिए
+                English Pedagogy का सम्पूर्ण अध्ययन कोर्स।
+            </p>
+
+            <div class="price">
+                ₹99
+            </div>
+
+            <button
+                class="view-btn"
+                onclick="viewCourse('English Pedagogy','99')">
+                View Course
+            </button>
+
+        </div>
+
+
+        <!-- COURSE 2 -->
+        <div class="course-card">
+
+            <span class="badge">
+                PREMIUM COURSE
+            </span>
+
+            <h2>
+                English Pedagogy Complete
+            </h2>
+
+            <p>
+                English Pedagogy के सभी महत्वपूर्ण Topics,
+                Notes, Questions और परीक्षा उपयोगी सामग्री।
+            </p>
+
+            <div class="price">
+                ₹499
+            </div>
+
+            <button
+                class="view-btn"
+                onclick="viewCourse('English Pedagogy Complete','499')">
+                View Course
+            </button>
+
+        </div>
+
+
+        <!-- COURSE 3 -->
+        <div class="course-card">
+
+            <span class="badge">
+                COMING SOON
+            </span>
+
+            <h2>
+                Child Development & Pedagogy
+            </h2>
+
+            <p>
+                CTET, CGTET और Teacher Recruitment के लिए
+                Child Development एवं Pedagogy का सम्पूर्ण कोर्स।
+            </p>
+
+            <div class="price">
+                जल्द उपलब्ध
+            </div>
+
+            <button
+                class="view-btn"
+                onclick="comingSoon()">
+                Coming Soon
+            </button>
+
+        </div>
+
+
+        <!-- COURSE 4 -->
+        <div class="course-card">
+
+            <span class="badge">
+                COMING SOON
+            </span>
+
+            <h2>
+                Science Pedagogy
+            </h2>
+
+            <p>
+                Science Teacher Recruitment, CTET और CGTET
+                के लिए विशेष अध्ययन सामग्री।
+            </p>
+
+            <div class="price">
+                जल्द उपलब्ध
+            </div>
+
+            <button
+                class="view-btn"
+                onclick="comingSoon()">
+                Coming Soon
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h3>EXAM KEY CLUB</h3>
+
+    <p>
+        Teacher Recruitment & TET Preparation
+    </p>
+
+    <p>
+        © 2026 Exam Key Club. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* STUDENT LOGIN */
+
+function studentLogin(){
+
+    alert(
+        "Student Login सुविधा अगले चरण में उपलब्ध होगी।"
+    );
+
+}
+
+
+/* COURSE */
+
+function viewCourse(course, price){
+
+    alert(
+        "Course: " + course +
+        "\nPrice: ₹" + price +
+        "\n\nCourse access/payment system अगले चरण में जोड़ा जाएगा।"
+    );
+
+}
+
+
+/* COMING SOON */
+
+function comingSoon(){
+
+    alert(
+        "यह Course जल्द उपलब्ध होगा।"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
