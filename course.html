@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>English Pedagogy Course - Exam Key Club</title>
+<title>Language Learning & Acquisition | Exam Key Club</title>
 
 <style>
 *{
@@ -15,628 +15,430 @@
 
 body{
     font-family:Arial,sans-serif;
-    background:#f4f7fb;
+    background:#f5f7fb;
     color:#172033;
     line-height:1.6;
 }
 
-.header{
-    background:#1557d6;
+header{
+    background:linear-gradient(135deg,#1d4ed8,#4f46e5);
     color:white;
-    padding:18px 22px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-size:24px;
-    font-weight:bold;
-}
-
-.login-btn{
-    background:white;
-    color:#1557d6;
-    border:none;
-    padding:12px 18px;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-.hero{
-    background:linear-gradient(135deg,#1557d6,#3978e8);
-    color:white;
-    padding:45px 25px;
+    padding:45px 20px;
     text-align:center;
 }
 
-.hero h1{
-    font-size:32px;
-    margin-bottom:12px;
+.logo{
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:1px;
 }
 
-.hero p{
+header h1{
+    font-size:32px;
+    margin:12px 0 8px;
+}
+
+header p{
     font-size:17px;
     max-width:700px;
     margin:auto;
 }
 
 .container{
-    max-width:900px;
-    margin:25px auto;
-    padding:0 15px;
-}
-
-.card{
-    background:white;
-    border-radius:18px;
-    padding:25px;
-    margin-bottom:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-}
-
-.badge{
-    display:inline-block;
-    background:#e8f0ff;
-    color:#1557d6;
-    padding:7px 14px;
-    border-radius:20px;
-    font-weight:bold;
-    margin-bottom:15px;
-}
-
-h2{
-    font-size:24px;
-    margin-bottom:15px;
-}
-
-.topic{
-    padding:12px 0;
-    border-bottom:1px solid #eee;
-}
-
-.topic:last-child{
-    border-bottom:none;
+    max-width:1000px;
+    margin:auto;
+    padding:25px 15px 100px;
 }
 
 .price-box{
+    background:white;
+    margin:-30px auto 30px;
+    max-width:500px;
+    border-radius:18px;
+    padding:25px;
     text-align:center;
-    background:#f7faff;
-    border:2px solid #dce8ff;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+    position:relative;
+}
+
+.old-price{
+    color:#888;
+    text-decoration:line-through;
+    font-size:17px;
 }
 
 .price{
     font-size:38px;
     font-weight:bold;
-    color:#1557d6;
-    margin:10px 0;
+    color:#1d4ed8;
+    margin:5px 0;
+}
+
+.offer{
+    color:#16a34a;
+    font-weight:bold;
 }
 
 .buy-btn{
-    width:100%;
-    background:#1557d6;
-    color:white;
-    border:none;
-    padding:17px;
-    border-radius:12px;
-    font-size:19px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.buy-btn:active{
-    transform:scale(.98);
-}
-
-.info{
-    color:#657084;
-    font-size:14px;
-    margin-top:12px;
-}
-
-.footer{
-    text-align:center;
-    padding:30px 15px;
-    color:#687386;
-    font-size:14px;
-}
-
-.back-btn{
     display:block;
-    text-align:center;
-    margin-top:15px;
-    color:#1557d6;
+    width:100%;
+    background:#16a34a;
+    color:white;
     text-decoration:none;
+    padding:15px;
+    border-radius:10px;
+    font-size:18px;
     font-weight:bold;
-}
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<div class="header">
-    <div class="logo">EXAM KEY CLUB</div>
-    <button class="login-btn" onclick="studentLogin()">
-        Student Login
-    </button>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-    <h1>English Pedagogy</h1>
-    <p>
-        Teacher Recruitment, CTET और CGTET के लिए
-        English Pedagogy का सम्पूर्ण अध्ययन कोर्स।
-    </p>
-</section>
-
-<div class="container">
-
-    <!-- COURSE INTRO -->
-    <div class="card">
-        <span class="badge">ENGLISH PEDAGOGY</span>
-
-        <h2>📚 English Pedagogy Complete Course</h2>
-
-        <p>
-            इस कोर्स में English Language Teaching और Pedagogy
-            से जुड़े महत्वपूर्ण विषयों को परीक्षा की दृष्टि से
-            सरल एवं व्यवस्थित तरीके से समझाया जाएगा।
-        </p>
-    </div>
-
-    <!-- WHAT YOU GET -->
-    <div class="card">
-        <h2>🎯 इस कोर्स में क्या मिलेगा?</h2>
-
-        <div class="topic">✅ Language Teaching के Principles</div>
-        <div class="topic">✅ Phonics और Phonemic Awareness</div>
-        <div class="topic">✅ Language Skills – Listening, Speaking, Reading & Writing</div>
-        <div class="topic">✅ Grammar और Communication</div>
-        <div class="topic">✅ Diverse Classroom में Language Teaching</div>
-        <div class="topic">✅ Language Difficulties, Errors और Disorders</div>
-        <div class="topic">✅ Language Assessment</div>
-        <div class="topic">✅ Child-centred और Activity-based Language Teaching</div>
-        <div class="topic">✅ CTET / CGTET परीक्षा उपयोगी प्रश्न</div>
-    </div>
-
-    <!-- EXAMS -->
-    <div class="card">
-        <h2>📝 किन परीक्षाओं के लिए?</h2>
-
-        <div class="topic">🎓 CTET</div>
-        <div class="topic">🎓 CGTET</div>
-        <div class="topic">🎓 Teacher Recruitment Exams</div>
-    </div>
-
-    <!-- PRICE -->
-    <div class="card price-box">
-
-        <h2>💰 Course Fee</h2>
-
-        <div class="price">₹99</div>
-
-        <p>
-            एक बार खरीदें और कोर्स उपलब्ध होने के बाद
-            अपनी तैयारी शुरू करें।
-        </p>
-
-        <br>
-
-        <button class="buy-btn" onclick="buyCourse()">
-            ₹99 Buy Now
-        </button>
-
-        <p class="info">
-            🔒 Secure Course Access<br>
-            Payment के बाद Student Access की सुविधा उपलब्ध होगी।
-        </p>
-
-    </div>
-
-    <!-- BACK -->
-    <a class="back-btn" href="student.html">
-        ← वापस Courses पर जाएँ
-    </a>
-
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-    © 2026 Exam Key Club
-    <br>
-    CTET • CGTET • Teacher Recruitment
-</div>
-
-
-<script>
-
-function studentLogin(){
-    alert("Student Login सुविधा अगले चरण में उपलब्ध होगी।");
-}
-
-function buyCourse(){
-
-    alert(
-        "English Pedagogy\n\n" +
-        "Course Price: ₹99\n\n" +
-        "Payment System अगले चरण में जोड़ा जाएगा।"
-    );
-
-}
-
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>English Pedagogy Course - Exam Key Club</title>
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial,sans-serif;
-  background:#f4f7fb;
-  color:#172033;
-}
-
-.header{
-  background:linear-gradient(135deg,#1557d6,#0b3fa8);
-  color:white;
-  padding:25px 18px;
-  text-align:center;
-}
-
-.header h1{
-  font-size:30px;
-  margin-bottom:8px;
-}
-
-.header p{
-  font-size:16px;
-}
-
-.container{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
-}
-
-.card{
-  background:white;
-  border-radius:18px;
-  padding:25px;
-  margin-bottom:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
-
-.course-title{
-  font-size:28px;
-  color:#1557d6;
-  margin-bottom:12px;
-}
-
-.price{
-  font-size:32px;
-  font-weight:bold;
-  margin:20px 0;
-  color:#111827;
-}
-
-.old-price{
-  text-decoration:line-through;
-  color:#777;
-  font-size:18px;
-  margin-left:8px;
-}
-
-.buy-btn{
-  display:block;
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:12px;
-  background:#16a34a;
-  color:white;
-  font-size:20px;
-  font-weight:bold;
-  cursor:pointer;
+    margin-top:18px;
 }
 
 .buy-btn:hover{
-  background:#12833b;
+    background:#15803d;
 }
 
-.module{
-  padding:14px;
-  margin:10px 0;
-  background:#f1f5ff;
-  border-left:5px solid #1557d6;
-  border-radius:8px;
+.section-title{
+    text-align:center;
+    margin:35px 0 20px;
 }
 
-.module strong{
-  display:block;
-  margin-bottom:5px;
+.section-title h2{
+    font-size:27px;
 }
 
-.highlight{
-  background:#fff7df;
-  border-left:5px solid #f59e0b;
-  padding:15px;
-  border-radius:8px;
-  margin-top:15px;
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
 }
 
-.footer{
-  text-align:center;
-  padding:25px;
-  color:#666;
-  font-size:14px;
+.info-card{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.modal{
-  display:none;
-  position:fixed;
-  z-index:1000;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,.65);
+.info-card h3{
+    margin-bottom:8px;
+    color:#1d4ed8;
 }
 
-.modal-box{
-  background:white;
-  width:90%;
-  max-width:450px;
-  margin:15% auto;
-  padding:25px;
-  border-radius:18px;
-  text-align:center;
+.chapter{
+    background:white;
+    margin:12px 0;
+    padding:18px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.modal-box h2{
-  color:#1557d6;
-  margin-bottom:15px;
+.chapter-number{
+    background:#e0e7ff;
+    color:#1d4ed8;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    flex-shrink:0;
 }
 
-.modal-box input{
-  width:100%;
-  padding:14px;
-  margin:8px 0;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:16px;
+.chapter-content{
+    flex:1;
 }
 
-.payment-btn{
-  width:100%;
-  padding:14px;
-  background:#1557d6;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:18px;
-  margin-top:10px;
+.chapter-content h3{
+    font-size:17px;
 }
 
-.close-btn{
-  margin-top:12px;
-  padding:10px 20px;
-  background:#ddd;
-  border:none;
-  border-radius:8px;
+.chapter-content p{
+    color:#666;
+    font-size:14px;
+}
+
+.lock{
+    color:#f59e0b;
+    font-size:20px;
+}
+
+.features{
+    background:#111827;
+    color:white;
+    border-radius:18px;
+    padding:25px;
+    margin-top:35px;
+}
+
+.features h2{
+    text-align:center;
+    margin-bottom:18px;
+}
+
+.features li{
+    list-style:none;
+    margin:10px 0;
+}
+
+.features li::before{
+    content:"✓";
+    color:#22c55e;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.cta{
+    text-align:center;
+    background:#eef2ff;
+    border-radius:18px;
+    padding:30px 20px;
+    margin-top:35px;
+}
+
+footer{
+    background:#111827;
+    color:#aaa;
+    text-align:center;
+    padding:25px 15px;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:25px;
+    }
+
+    header p{
+        font-size:15px;
+    }
+
+    .price{
+        font-size:34px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>EXAM KEY CLUB</h1>
-  <p>Teacher Recruitment • CTET • CGTET</p>
-</div>
+<header>
+
+<div class="logo">EXAM KEY CLUB</div>
+
+<h1>भाषा अधिगम एवं अर्जन</h1>
+
+<p>
+Language Learning & Acquisition
+<br>
+सिद्धांत • उदाहरण • कक्षा-व्यवहार • परीक्षा तैयारी
+</p>
+
+</header>
 
 <div class="container">
 
-  <div class="card">
+<div class="price-box">
 
-    <h2 class="course-title">
-      English Pedagogy
-    </h2>
+<div class="old-price">₹199</div>
 
-    <p>
-      CTET, CGTET और Teacher Recruitment परीक्षाओं के लिए
-      English Pedagogy का सम्पूर्ण अध्ययन कोर्स।
-    </p>
+<div class="price">₹99</div>
 
-    <div class="price">
-      ₹99
-      <span class="old-price">₹299</span>
-    </div>
+<div class="offer">
+एक बार भुगतान • Course Access
+</div>
 
-    <button class="buy-btn" onclick="buyCourse()">
-      ₹99 Buy Now
-    </button>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>📚 Course में क्या मिलेगा?</h2>
-
-    <div class="module">
-      <strong>01. Principles of Language Teaching</strong>
-      भाषा शिक्षण के प्रमुख सिद्धांत एवं अवधारणाएँ
-    </div>
-
-    <div class="module">
-      <strong>02. Phonics & Phonemic Awareness</strong>
-      Phonics, phonemes और phonemic awareness
-    </div>
-
-    <div class="module">
-      <strong>03. Functions of Language</strong>
-      भाषा के कार्य एवं बच्चों द्वारा भाषा का उपयोग
-    </div>
-
-    <div class="module">
-      <strong>04. Language Skills</strong>
-      Listening, Speaking, Reading और Writing
-    </div>
-
-    <div class="module">
-      <strong>05. Grammar in Language Learning</strong>
-      भाषा सीखने में Grammar की भूमिका
-    </div>
-
-    <div class="module">
-      <strong>06. Diverse Classroom</strong>
-      विविध कक्षा में भाषा शिक्षण की चुनौतियाँ
-    </div>
-
-    <div class="module">
-      <strong>07. Language Difficulties & Errors</strong>
-      भाषा संबंधी कठिनाइयाँ, Errors और Disorders
-    </div>
-
-    <div class="module">
-      <strong>08. Language Assessment</strong>
-      Speaking, Listening, Reading और Writing का मूल्यांकन
-    </div>
-
-    <div class="highlight">
-      ⭐ परीक्षा-उपयोगी Notes + Concept Explanation +
-      MCQs/PYQs को ध्यान में रखकर तैयार किया जाएगा।
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <h2>🎯 यह Course किसके लिए है?</h2>
-
-    <p style="margin-top:12px;line-height:1.8;">
-      ✔ CTET अभ्यर्थी<br>
-      ✔ CGTET अभ्यर्थी<br>
-      ✔ Teacher Recruitment की तैयारी करने वाले अभ्यर्थी<br>
-      ✔ English Pedagogy को मजबूत करने वाले विद्यार्थी
-    </p>
-
-  </div>
+<a
+href="https://rzp.io/rzp/RI6LgCUg"
+class="buy-btn"
+target="_blank">
+💳 ₹99 में Course खरीदें
+</a>
 
 </div>
 
-
-<div class="footer">
-  © 2026 Exam Key Club
+<div class="section-title">
+<h2>यह Course किसके लिए है?</h2>
 </div>
 
+<div class="info-grid">
 
-<!-- BUY NOW MODAL -->
+<div class="info-card">
+<h3>🎯 CTET</h3>
+<p>Language Development & Acquisition की परीक्षा-केंद्रित तैयारी।</p>
+</div>
 
-<div id="paymentModal" class="modal">
+<div class="info-card">
+<h3>📚 CGTET</h3>
+<p>शिक्षक पात्रता परीक्षा के लिए उपयोगी concepts और classroom examples।</p>
+</div>
 
-  <div class="modal-box">
+<div class="info-card">
+<h3>📝 State TET</h3>
+<p>विभिन्न TET परीक्षाओं के लिए concept-based preparation।</p>
+</div>
 
-    <h2>English Pedagogy</h2>
-
-    <p>
-      Course Price: <strong>₹99</strong>
-    </p>
-
-    <br>
-
-    <input
-      type="text"
-      id="studentName"
-      placeholder="अपना नाम दर्ज करें"
-    >
-
-    <input
-  type="tel"
-  id="mobile"
-  placeholder="मोबाइल नंबर"
-  maxlength="10"
-  minlength="10"
-  required
->
-
-    <button
-      class="payment-btn"
-      onclick="startPayment()">
-      Proceed to Payment ₹99
-    </button>
-
-    <button
-      class="close-btn"
-      onclick="closePayment()">
-      Cancel
-    </button>
-
-  </div>
+<div class="info-card">
+<h3>👨‍🏫 Teachers</h3>
+<p>भाषा शिक्षण को classroom practice से जोड़ने के लिए।</p>
+</div>
 
 </div>
 
+<div class="section-title">
+<h2>📖 Course में क्या-क्या मिलेगा?</h2>
+</div>
 
-<script>
+<div class="chapter">
+<div class="chapter-number">1</div>
+<div class="chapter-content">
+<h3>भूमिका — भाषा, अर्जन और अधिगम को समझना</h3>
+<p>Language, Acquisition और Learning की मूल अवधारणाएँ</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-function buyCourse(){
+<div class="chapter">
+<div class="chapter-number">2</div>
+<div class="chapter-content">
+<h3>भाषा अर्जन बनाम भाषा अधिगम</h3>
+<p>Acquisition vs Learning — अंतर, उदाहरण एवं classroom implications</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-  document.getElementById("paymentModal").style.display="block";
+<div class="chapter">
+<div class="chapter-number">3</div>
+<div class="chapter-content">
+<h3>प्रथम भाषा अर्जन (L1 Acquisition)</h3>
+<p>मातृभाषा अर्जन, stages, Critical Period और Overgeneralization</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-}
+<div class="chapter">
+<div class="chapter-number">4</div>
+<div class="chapter-content">
+<h3>द्वितीय भाषा अर्जन (SLA)</h3>
+<p>Second Language Acquisition, Interlanguage, Transfer और Silent Period</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-function closePayment(){
+<div class="chapter">
+<div class="chapter-number">5</div>
+<div class="chapter-content">
+<h3>बहुभाषिकता एवं भारत का भाषायी परिदृश्य</h3>
+<p>Multilingualism और भारतीय classroom context</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-  document.getElementById("paymentModal").style.display="none";
+<div class="chapter">
+<div class="chapter-number">6</div>
+<div class="chapter-content">
+<h3>प्रमुख सिद्धांत एवं सिद्धांतकार</h3>
+<p>Language learning theories और प्रमुख theorists</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-}
+<div class="chapter">
+<div class="chapter-number">7</div>
+<div class="chapter-content">
+<h3>भाषा कौशल — LSRW</h3>
+<p>Listening • Speaking • Reading • Writing</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-function startPayment(){
+<div class="chapter">
+<div class="chapter-number">8</div>
+<div class="chapter-content">
+<h3>त्रुटि विश्लेषण (Error Analysis)</h3>
+<p>Language errors, कारण और classroom analysis</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-  let name =
-  document.getElementById("studentName").value.trim();
+<div class="chapter">
+<div class="chapter-number">9</div>
+<div class="chapter-content">
+<h3>कक्षा-शिक्षण की व्यावहारिक रणनीतियाँ</h3>
+<p>Language teaching strategies और classroom applications</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-  let mobile =
-  document.getElementById("studentMobile").value.trim();
+<div class="chapter">
+<div class="chapter-number">10</div>
+<div class="chapter-content">
+<h3>नीतिगत पक्ष — NCF 2005 एवं NEP 2020</h3>
+<p>Language education के policy perspectives</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-  if(name===""){
+<div class="chapter">
+<div class="chapter-number">11</div>
+<div class="chapter-content">
+<h3>परीक्षा हेतु अभ्यास प्रश्न</h3>
+<p>CTET / CGTET / State TET oriented practice</p>
+</div>
+<div class="lock">🔒</div>
+</div>
 
-    alert("कृपया अपना नाम दर्ज करें।");
-    return;
+<div class="features">
 
-  }
+<h2>⭐ Course Highlights</h2>
 
-  if (!/^[6-9]\d{9}$/.test(mobile)) {
-    alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें");
-    return;
-}
+<ul>
+<li>Concept-based अध्ययन</li>
+<li>सरल हिन्दी में explanation</li>
+<li>English terminology के साथ स्पष्ट व्याख्या</li>
+<li>उदाहरण एवं classroom behaviour</li>
+<li>CTET / CGTET / State TET focus</li>
+<li>महत्वपूर्ण परीक्षा बिंदु</li>
+<li>Practice Questions</li>
+</ul>
 
-  alert(
-    "Payment System अगले चरण में जोड़ा जाएगा।\n\n"+
-    "Student: "+name+
-    "\nMobile: "+mobile+
-    "\nCourse Price: ₹99"
-  );
+</div>
 
-}
+<div class="cta">
 
-</script>
+<h2>🚀 आज ही तैयारी शुरू करें</h2>
+
+<p>
+Language Learning & Acquisition को केवल रटने के बजाय
+concept और classroom examples के साथ समझें।
+</p>
+
+<a
+href="https://rzp.io/rzp/RI6LgCUg"
+class="buy-btn"
+target="_blank">
+💳 अभी ₹99 में Enroll करें
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+<strong>EXAM KEY CLUB</strong>
+
+<br>
+
+Language Learning & Acquisition
+
+<br><br>
+
+© 2026 Exam Key Club • All Rights Reserved
+
+</footer>
 
 </body>
 </html>
