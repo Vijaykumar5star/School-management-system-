@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>English Pedagogy Course - Exam Key Club</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+    line-height:1.6;
+}
+
+.header{
+    background:#1557d6;
+    color:white;
+    padding:18px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.login-btn{
+    background:white;
+    color:#1557d6;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.hero{
+    background:linear-gradient(135deg,#1557d6,#3978e8);
+    color:white;
+    padding:45px 25px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:32px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:17px;
+    max-width:700px;
+    margin:auto;
+}
+
+.container{
+    max-width:900px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.badge{
+    display:inline-block;
+    background:#e8f0ff;
+    color:#1557d6;
+    padding:7px 14px;
+    border-radius:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+h2{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.topic{
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+}
+
+.topic:last-child{
+    border-bottom:none;
+}
+
+.price-box{
+    text-align:center;
+    background:#f7faff;
+    border:2px solid #dce8ff;
+}
+
+.price{
+    font-size:38px;
+    font-weight:bold;
+    color:#1557d6;
+    margin:10px 0;
+}
+
+.buy-btn{
+    width:100%;
+    background:#1557d6;
+    color:white;
+    border:none;
+    padding:17px;
+    border-radius:12px;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.buy-btn:active{
+    transform:scale(.98);
+}
+
+.info{
+    color:#657084;
+    font-size:14px;
+    margin-top:12px;
+}
+
+.footer{
+    text-align:center;
+    padding:30px 15px;
+    color:#687386;
+    font-size:14px;
+}
+
+.back-btn{
+    display:block;
+    text-align:center;
+    margin-top:15px;
+    color:#1557d6;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">EXAM KEY CLUB</div>
+    <button class="login-btn" onclick="studentLogin()">
+        Student Login
+    </button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>English Pedagogy</h1>
+    <p>
+        Teacher Recruitment, CTET और CGTET के लिए
+        English Pedagogy का सम्पूर्ण अध्ययन कोर्स।
+    </p>
+</section>
+
+<div class="container">
+
+    <!-- COURSE INTRO -->
+    <div class="card">
+        <span class="badge">ENGLISH PEDAGOGY</span>
+
+        <h2>📚 English Pedagogy Complete Course</h2>
+
+        <p>
+            इस कोर्स में English Language Teaching और Pedagogy
+            से जुड़े महत्वपूर्ण विषयों को परीक्षा की दृष्टि से
+            सरल एवं व्यवस्थित तरीके से समझाया जाएगा।
+        </p>
+    </div>
+
+    <!-- WHAT YOU GET -->
+    <div class="card">
+        <h2>🎯 इस कोर्स में क्या मिलेगा?</h2>
+
+        <div class="topic">✅ Language Teaching के Principles</div>
+        <div class="topic">✅ Phonics और Phonemic Awareness</div>
+        <div class="topic">✅ Language Skills – Listening, Speaking, Reading & Writing</div>
+        <div class="topic">✅ Grammar और Communication</div>
+        <div class="topic">✅ Diverse Classroom में Language Teaching</div>
+        <div class="topic">✅ Language Difficulties, Errors और Disorders</div>
+        <div class="topic">✅ Language Assessment</div>
+        <div class="topic">✅ Child-centred और Activity-based Language Teaching</div>
+        <div class="topic">✅ CTET / CGTET परीक्षा उपयोगी प्रश्न</div>
+    </div>
+
+    <!-- EXAMS -->
+    <div class="card">
+        <h2>📝 किन परीक्षाओं के लिए?</h2>
+
+        <div class="topic">🎓 CTET</div>
+        <div class="topic">🎓 CGTET</div>
+        <div class="topic">🎓 Teacher Recruitment Exams</div>
+    </div>
+
+    <!-- PRICE -->
+    <div class="card price-box">
+
+        <h2>💰 Course Fee</h2>
+
+        <div class="price">₹99</div>
+
+        <p>
+            एक बार खरीदें और कोर्स उपलब्ध होने के बाद
+            अपनी तैयारी शुरू करें।
+        </p>
+
+        <br>
+
+        <button class="buy-btn" onclick="buyCourse()">
+            ₹99 Buy Now
+        </button>
+
+        <p class="info">
+            🔒 Secure Course Access<br>
+            Payment के बाद Student Access की सुविधा उपलब्ध होगी।
+        </p>
+
+    </div>
+
+    <!-- BACK -->
+    <a class="back-btn" href="student.html">
+        ← वापस Courses पर जाएँ
+    </a>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Exam Key Club
+    <br>
+    CTET • CGTET • Teacher Recruitment
+</div>
+
+
+<script>
+
+function studentLogin(){
+    alert("Student Login सुविधा अगले चरण में उपलब्ध होगी।");
+}
+
+function buyCourse(){
+
+    alert(
+        "English Pedagogy\n\n" +
+        "Course Price: ₹99\n\n" +
+        "Payment System अगले चरण में जोड़ा जाएगा।"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
