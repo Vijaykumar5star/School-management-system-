@@ -167,7 +167,7 @@ function login(event){
    * से secure किया जाएगा।
    */
 
-  if(username === "admin" && password === "1234"){
+  if(username.toLowerCase() === "admin" && password === "1234"){
 
     sessionStorage.setItem("adminLoggedIn","true");
 
