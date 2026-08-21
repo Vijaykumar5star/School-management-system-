@@ -568,11 +568,13 @@ body{
     >
 
     <input
-      type="tel"
-      id="studentMobile"
-      placeholder="मोबाइल नंबर"
-      maxlength="10"
-    >
+  type="tel"
+  id="mobile"
+  placeholder="मोबाइल नंबर"
+  maxlength="10"
+  minlength="10"
+  required
+>
 
     <button
       class="payment-btn"
@@ -620,12 +622,10 @@ function startPayment(){
 
   }
 
-  if(mobile.length!==10){
-
-    alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");
+  if (!/^[6-9]\d{9}$/.test(mobile)) {
+    alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें");
     return;
-
-  }
+}
 
   alert(
     "Payment System अगले चरण में जोड़ा जाएगा।\n\n"+
