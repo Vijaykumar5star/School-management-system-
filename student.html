@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Key Club - Student</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+}
+
+.header{
+  background:#1554d1;
+  color:white;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.login{
+  background:white;
+  color:#1554d1;
+  border:0;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.hero{
+  background:linear-gradient(135deg,#1554d1,#4f7ff0);
+  color:white;
+  padding:35px 20px;
+}
+
+.hero h1{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:16px;
+  line-height:1.6;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:25px 16px;
+}
+
+.section-title{
+  font-size:25px;
+  margin-bottom:18px;
+}
+
+.courses{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:18px;
+}
+
+.course{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.badge{
+  display:inline-block;
+  background:#e8f0ff;
+  color:#1554d1;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.course h3{
+  font-size:21px;
+  margin-bottom:10px;
+}
+
+.course p{
+  color:#667085;
+  line-height:1.5;
+  min-height:70px;
+}
+
+.price{
+  font-size:24px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+.buy{
+  width:100%;
+  background:#1554d1;
+  color:white;
+  border:0;
+  padding:13px;
+  border-radius:9px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.buy:hover{
+  background:#0d42aa;
+}
+
+.footer{
+  text-align:center;
+  padding:30px;
+  margin-top:30px;
+  background:#172033;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">EXAM KEY CLUB</div>
+  <button class="login" onclick="login()">Student Login</button>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Teacher Recruitment की तैयारी अब आसान</h1>
+    <p>
+      CTET, CGTET और Teacher Recruitment परीक्षाओं के लिए
+      गुणवत्तापूर्ण अध्ययन सामग्री और Courses।
+    </p>
+  </div>
+</section>
+
+<main class="container">
+
+  <h2 class="section-title">📚 Available Courses</h2>
+
+  <div class="courses">
+
+    <div class="course">
+      <span class="badge">ENGLISH PEDAGOGY</span>
+
+      <h3>English Pedagogy</h3>
+
+      <p>
+        Teacher Recruitment, CTET और CGTET के लिए
+        English Pedagogy का सम्पूर्ण अध्ययन कोर्स।
+      </p>
+
+      <div class="price">₹99</div>
+
+      <button class="buy" onclick="buyCourse('English Pedagogy',99)">
+        View Course
+      </button>
+    </div>
+
+    <div class="course">
+      <span class="badge">PREMIUM COURSE</span>
+
+      <h3>English Pedagogy Complete</h3>
+
+      <p>
+        English Pedagogy के सभी महत्वपूर्ण Topics,
+        Notes, Questions और परीक्षा उपयोगी सामग्री।
+      </p>
+
+      <div class="price">₹499</div>
+
+      <button class="buy" onclick="buyCourse('English Pedagogy Complete',499)">
+        View Course
+      </button>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+  © 2026 Exam Key Club
+  <br>
+  CTET • CGTET • Teacher Recruitment
+</footer>
+
+<script>
+
+function login(){
+  alert("Student Login सुविधा जल्द उपलब्ध होगी।");
+}
+
+function buyCourse(name,price){
+  alert(
+    "Course: " + name +
+    "\\nPrice: ₹" + price +
+    "\\n\\nCourse access/payment system अगले चरण में जोड़ा जाएगा।"
+  );
+}
+
+</script>
+
+</body>
+</html>
