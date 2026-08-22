@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Course Access | Exam Key Club</title>
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<title>English Pedagogy Course | Exam Key Club</title>
 
 <style>
 *{
@@ -174,6 +172,12 @@ button:disabled{
     color:#c62828;
 }
 
+.info{
+    display:block;
+    background:#eef4ff;
+    color:#2454b8;
+}
+
 .footer{
     text-align:center;
     padding:25px 10px;
@@ -187,6 +191,10 @@ button:disabled{
     font-size:13px;
     margin-top:12px;
     line-height:1.6;
+}
+
+.hidden{
+    display:none;
 }
 </style>
 </head>
@@ -216,39 +224,59 @@ button:disabled{
 </div>
 
 <label>👤 आपका नाम</label>
+
 <input
     type="text"
     id="name"
     placeholder="अपना पूरा नाम लिखें"
+    autocomplete="name"
 >
 
 <label>📱 मोबाइल नंबर</label>
+
 <input
     type="tel"
     id="mobile"
     maxlength="10"
+    inputmode="numeric"
     placeholder="10 अंकों का मोबाइल नंबर"
 >
 
-<button class="pay-btn" id="payButton" onclick="startPayment()">
+<!-- PAYMENT -->
+
+<button
+    class="pay-btn"
+    id="payButton"
+    onclick="makePayment()"
+>
     💳 ₹99 अभी भुगतान करें
 </button>
 
 <div class="paybox">
-    <strong>🔐 Payment के बाद:</strong><br>
-    Payment सफल होने पर प्राप्त
-    <b>Payment ID / Transaction ID</b>
-    नीचे दर्ज करें।
+
+<strong>🔐 Payment के बाद:</strong><br>
+
+1. ऊपर दिए गए बटन से ₹99 का Payment करें।<br>
+2. Payment सफल होने के बाद प्राप्त
+<b>UTR / Transaction ID</b> नीचे दर्ज करें।<br>
+3. फिर <b>Course Access प्राप्त करें</b> पर क्लिक करें।
+
 </div>
 
 <label>🔑 Payment UTR / Transaction ID</label>
+
 <input
     type="text"
     id="paymentId"
     placeholder="UTR / Transaction ID"
+    autocomplete="off"
 >
 
-<button class="access-btn" onclick="requestAccess()">
+<button
+    class="access-btn"
+    id="accessButton"
+    onclick="requestAccess()"
+>
     🔓 Course Access प्राप्त करें
 </button>
 
@@ -267,146 +295,313 @@ button:disabled{
 
 </div>
 
+
 <script>
 
-/* ==========================================
-   IMPORTANT:
-   यहाँ अपना Razorpay KEY ID डालना है
-   ========================================== */
+/* =====================================================
+   EXAM KEY CLUB
+   RAZORPAY PAYMENT HANDLE
+   ===================================================== */
 
-const RAZORPAY_KEY_ID = "YOUR_RAZORPAY_KEY_ID";
+const PAYMENT_LINK =
+"https://razorpay.me/@examkeyclubvijaykumarsahu";
 
 
-function startPayment(){
+/* =====================================================
+   GOOGLE APPS SCRIPT WEB APP
+   ===================================================== */
 
-    const name = document.getElementById("name").value.trim();
-    const mobile = document.getElementById("mobile").value.trim();
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxOdwC2-SJeRw5KZ6VBhg-pQJHMr-2kYezYgX4Cfe8750C1Ue_VH7YrU9cZPTYS-qC4/exec";
+
+
+/* =====================================================
+   COURSE INFORMATION
+   ===================================================== */
+
+const COURSE_NAME = "English Pedagogy";
+
+const COURSE_PRICE = 99;
+
+
+/* =====================================================
+   PAYMENT
+   ===================================================== */
+
+function makePayment(){
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const mobile =
+        document.getElementById("mobile").value.trim();
+
 
     if(name === ""){
-        showStatus("कृपया अपना नाम दर्ज करें।","error");
+
+        showStatus(
+            "कृपया अपना नाम दर्ज करें।",
+            "error"
+        );
+
         return;
     }
+
 
     if(!/^[0-9]{10}$/.test(mobile)){
-        showStatus("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।","error");
-        return;
-    }
-
-    if(RAZORPAY_KEY_ID === "YOUR_RAZORPAY_KEY_ID"){
-        showStatus(
-            "Razorpay Key ID अभी सेट नहीं है। पहले Razorpay Key ID डालें।",
-            "error"
-        );
-        return;
-    }
-
-    const options = {
-
-        key: RAZORPAY_KEY_ID,
-
-        amount: 9900,
-
-        currency: "INR",
-
-        name: "Exam Key Club",
-
-        description: "English Pedagogy Course",
-
-        prefill:{
-            name:name,
-            contact:mobile
-        },
-
-        theme:{
-            color:"#315bdc"
-        },
-
-        handler:function(response){
-
-            document.getElementById("paymentId").value =
-                response.razorpay_payment_id;
-
-            showStatus(
-                "✅ Payment सफल हुआ!<br>अब नीचे Course Access प्राप्त करें पर क्लिक करें।",
-                "success"
-            );
-        },
-
-        modal:{
-            ondismiss:function(){
-                showStatus(
-                    "Payment window बंद कर दी गई।",
-                    "error"
-                );
-            }
-        }
-    };
-
-    const rzp = new Razorpay(options);
-
-    rzp.on("payment.failed",function(response){
 
         showStatus(
-            "❌ Payment असफल हुआ। कृपया दोबारा प्रयास करें।",
+            "कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।",
             "error"
         );
-    });
 
-    rzp.open();
-}
-
-
-function requestAccess(){
-
-    const name = document.getElementById("name").value.trim();
-    const mobile = document.getElementById("mobile").value.trim();
-    const paymentId = document.getElementById("paymentId").value.trim();
-
-    if(name === ""){
-        showStatus("कृपया अपना नाम दर्ज करें।","error");
         return;
     }
 
-    if(!/^[0-9]{10}$/.test(mobile)){
-        showStatus("कृपया सही मोबाइल नंबर दर्ज करें।","error");
-        return;
-    }
-
-    if(paymentId === ""){
-        showStatus(
-            "कृपया पहले Payment करें और Payment ID दर्ज करें।",
-            "error"
-        );
-        return;
-    }
 
     /*
-       अभी यहाँ हम Course Access confirmation दिखा रहे हैं।
-       अगला चरण Google Apps Script / Supabase से
-       payment verification और access control जोड़ना होगा।
+       ग्राहक को Razorpay Payment Handle पर भेजना
     */
 
+    window.open(
+        PAYMENT_LINK,
+        "_blank"
+    );
+
+
     showStatus(
-        "✅ आपका Course Access Request प्राप्त हो गया है।<br><br>" +
-        "Payment ID: " + paymentId +
-        "<br><br>" +
-        "आपका access verify किया जा रहा है।",
-        "success"
+        "💳 Razorpay Payment Page खुल गया है।<br><br>" +
+        "₹99 का Payment पूरा करने के बाद " +
+        "अपना UTR / Transaction ID नीचे दर्ज करें।",
+        "info"
     );
 }
 
 
+/* =====================================================
+   COURSE ACCESS REQUEST
+   ===================================================== */
+
+async function requestAccess(){
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const mobile =
+        document.getElementById("mobile").value.trim();
+
+    const paymentId =
+        document.getElementById("paymentId").value.trim();
+
+
+    /* NAME */
+
+    if(name === ""){
+
+        showStatus(
+            "कृपया अपना नाम दर्ज करें।",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /* MOBILE */
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        showStatus(
+            "कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /* PAYMENT ID */
+
+    if(paymentId === ""){
+
+        showStatus(
+            "कृपया Payment के बाद UTR / Transaction ID दर्ज करें।",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const button =
+        document.getElementById("accessButton");
+
+    button.disabled = true;
+
+    button.innerHTML =
+        "⏳ Payment Verify किया जा रहा है...";
+
+
+    showStatus(
+        "⏳ कृपया प्रतीक्षा करें...<br>" +
+        "आपकी Payment जानकारी verify की जा रही है।",
+        "info"
+    );
+
+
+    try{
+
+        const params = new URLSearchParams({
+
+            action:"course_access",
+
+            course:COURSE_NAME,
+
+            amount:COURSE_PRICE,
+
+            name:name,
+
+            mobile:mobile,
+
+            payment_id:paymentId
+
+        });
+
+
+        const response =
+            await fetch(
+                API_URL + "?" + params.toString()
+            );
+
+
+        const data =
+            await response.json();
+
+
+        /* ===============================
+           VERIFIED
+           =============================== */
+
+        if(
+            data.status === "success" ||
+            data.success === true
+        ){
+
+            showStatus(
+
+                "🎉 <b>Payment Verified!</b><br><br>" +
+
+                "आपका <b>" +
+                COURSE_NAME +
+                "</b> Course Unlock हो गया है।<br><br>" +
+
+                (
+                    data.course_url
+                    ?
+                    '<a href="' +
+                    data.course_url +
+                    '" target="_blank" ' +
+                    'style="display:inline-block;' +
+                    'background:#16a34a;' +
+                    'color:white;' +
+                    'padding:12px 20px;' +
+                    'border-radius:10px;' +
+                    'text-decoration:none;' +
+                    'font-weight:bold;">' +
+                    '📚 Course खोलें' +
+                    '</a>'
+                    :
+                    "Course link administrator द्वारा प्रदान किया जाएगा।"
+                ),
+
+                "success"
+            );
+
+        }
+
+
+        /* ===============================
+           PENDING
+           =============================== */
+
+        else if(
+            data.status === "pending"
+        ){
+
+            showStatus(
+
+                "⏳ आपका Payment अभी verify नहीं हुआ है।<br><br>" +
+
+                "यदि आपने अभी Payment किया है तो कुछ समय बाद " +
+                "दोबारा प्रयास करें।",
+
+                "info"
+            );
+
+        }
+
+
+        /* ===============================
+           FAILED
+           =============================== */
+
+        else{
+
+            showStatus(
+
+                "❌ Payment Verification सफल नहीं हुआ।<br><br>" +
+
+                (
+                    data.message ||
+                    "कृपया UTR / Transaction ID सही दर्ज करें।"
+                ),
+
+                "error"
+            );
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        showStatus(
+
+            "⚠️ Server से संपर्क नहीं हो पाया।<br><br>" +
+            "कृपया Internet connection जाँचें और दोबारा प्रयास करें।",
+
+            "error"
+        );
+
+    }
+
+
+    button.disabled = false;
+
+    button.innerHTML =
+        "🔓 Course Access प्राप्त करें";
+}
+
+
+/* =====================================================
+   STATUS MESSAGE
+   ===================================================== */
+
 function showStatus(message,type){
 
-    const box = document.getElementById("status");
+    const box =
+        document.getElementById("status");
 
     box.innerHTML = message;
 
-    box.className = "status " + type;
+    box.className =
+        "status " + type;
 
-    window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior:"smooth"
+    box.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
     });
 }
 
