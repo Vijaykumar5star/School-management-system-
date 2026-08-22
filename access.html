@@ -14,16 +14,24 @@
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#f3f6fb;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:linear-gradient(135deg,#eef2ff,#f8f9ff);
+  min-height:100vh;
+  padding:20px;
   color:#222;
 }
 
+.container{
+  max-width:520px;
+  margin:auto;
+}
+
 .header{
-  background:linear-gradient(135deg,#2447d8,#4936d9);
+  background:linear-gradient(135deg,#3157d5,#7546c9);
   color:white;
+  padding:30px 20px;
+  border-radius:22px 22px 0 0;
   text-align:center;
-  padding:45px 20px;
 }
 
 .header h1{
@@ -32,161 +40,222 @@ body{
 }
 
 .header p{
-  font-size:17px;
-}
-
-.container{
-  max-width:600px;
-  margin:35px auto;
-  padding:20px;
+  font-size:16px;
+  opacity:.95;
 }
 
 .card{
   background:white;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 5px 25px rgba(0,0,0,.10);
+  padding:25px 20px;
+  border-radius:0 0 22px 22px;
+  box-shadow:0 8px 30px rgba(0,0,0,.12);
 }
 
-.card h2{
-  text-align:center;
-  margin-bottom:15px;
-  color:#2447d8;
-}
-
-.info{
-  background:#eef3ff;
+.course{
+  background:#f1f5ff;
+  border-left:5px solid #3157d5;
   padding:15px;
   border-radius:10px;
-  margin:20px 0;
-  line-height:1.7;
+  margin-bottom:22px;
+}
+
+.course h2{
+  color:#3157d5;
+  font-size:21px;
+  margin-bottom:6px;
+}
+
+.price{
+  font-size:28px;
+  font-weight:bold;
+  color:#e63946;
+  margin-top:8px;
 }
 
 label{
   display:block;
-  margin-top:15px;
-  margin-bottom:6px;
   font-weight:bold;
+  margin:16px 0 7px;
 }
 
 input{
   width:100%;
-  padding:13px;
+  padding:14px;
   border:1px solid #ccc;
-  border-radius:8px;
+  border-radius:10px;
   font-size:16px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#3157d5;
+  box-shadow:0 0 0 2px rgba(49,87,213,.12);
+}
+
+.payment{
+  background:#fff7df;
+  border:1px solid #ffd56a;
+  padding:15px;
+  border-radius:12px;
+  margin:20px 0;
+  line-height:1.6;
+}
+
+.payment strong{
+  color:#b56b00;
 }
 
 button{
   width:100%;
-  margin-top:22px;
-  padding:14px;
   border:none;
-  border-radius:9px;
-  background:#16a34a;
+  background:linear-gradient(135deg,#3157d5,#4b36c5);
   color:white;
-  font-size:17px;
+  padding:16px;
+  border-radius:12px;
+  font-size:18px;
   font-weight:bold;
   cursor:pointer;
+  margin-top:15px;
 }
 
-button:hover{
-  background:#12833b;
+button:active{
+  transform:scale(.98);
 }
 
 .note{
   text-align:center;
-  margin-top:18px;
+  font-size:13px;
   color:#666;
-  font-size:14px;
+  margin-top:15px;
+  line-height:1.5;
 }
 
-footer{
+.footer{
   text-align:center;
-  padding:30px;
-  color:#666;
+  margin-top:20px;
+  color:#777;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>EXAM KEY CLUB</h1>
-  <p>भाषा अधिगम एवं अर्जन</p>
-  <p>Language Learning & Acquisition</p>
-</div>
-
 <div class="container">
+
+  <div class="header">
+    <h1>📚 Exam Key Club</h1>
+    <p>Course Access Portal</p>
+  </div>
 
   <div class="card">
 
-    <h2>🎓 Course Access</h2>
-
-    <div class="info">
-      <strong>Course:</strong> भाषा अधिगम एवं अर्जन<br>
-      <strong>Language:</strong> Hindi + English<br>
-      <strong>Price:</strong> ₹99<br>
-      <strong>Access:</strong> Course Material / PDF
+    <div class="course">
+      <h2>English Pedagogy</h2>
+      <p>
+        Teacher Recruitment, CTET और CGTET की तैयारी के लिए
+        सम्पूर्ण अध्ययन Course
+      </p>
+      <div class="price">₹99</div>
     </div>
 
-    <label>अपना नाम लिखें</label>
-    <input type="text" id="name" placeholder="पूरा नाम">
+    <form id="accessForm">
 
-    <label>Mobile Number</label>
-    <input type="tel" id="mobile" placeholder="10 अंकों का मोबाइल नंबर">
+      <label>👤 आपका नाम</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="अपना पूरा नाम लिखें"
+        required
+      >
 
-    <label>Payment ID / UTR</label>
-    <input type="text" id="payment" placeholder="Razorpay Payment ID / UTR">
+      <label>📱 मोबाइल नंबर</label>
+      <input
+        type="tel"
+        id="mobile"
+        placeholder="10 अंकों का मोबाइल नंबर"
+        maxlength="10"
+        required
+      >
 
-    <button onclick="verifyPayment()">
-      🔐 Course Access प्राप्त करें
-    </button>
+      <div class="payment">
+        <strong>💳 Payment के बाद:</strong><br>
+        अपना Payment UTR / Transaction ID नीचे दर्ज करें।
+      </div>
+
+      <label>🔐 Payment UTR / Transaction ID</label>
+      <input
+        type="text"
+        id="utr"
+        placeholder="UTR / Transaction ID"
+        required
+      >
+
+      <button type="submit">
+        🔓 Course Access प्राप्त करें
+      </button>
+
+    </form>
 
     <div class="note">
-      Payment करने के बाद अपनी Payment ID/UTR दर्ज करें।
+      Payment verification के बाद आपका Course Access दिया जाएगा।
+      कृपया सही मोबाइल नंबर और UTR दर्ज करें।
     </div>
 
   </div>
 
-</div>
+  <div class="footer">
+    © 2026 Exam Key Club<br>
+    Teacher Recruitment Courses
+  </div>
 
-<footer>
-  <strong>EXAM KEY CLUB</strong><br><br>
-  Language Learning & Acquisition<br><br>
-  © 2026 Exam Key Club • All Rights Reserved
-</footer>
+</div>
 
 <script>
 
-function verifyPayment(){
+document.getElementById("accessForm").addEventListener("submit",function(e){
 
-  const name = document.getElementById("name").value.trim();
-  const mobile = document.getElementById("mobile").value.trim();
-  const payment = document.getElementById("payment").value.trim();
+  e.preventDefault();
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const mobile =
+    document.getElementById("mobile").value.trim();
+
+  const utr =
+    document.getElementById("utr").value.trim();
 
   if(name === ""){
-    alert("कृपया अपना नाम लिखें।");
+    alert("कृपया अपना नाम दर्ज करें।");
     return;
   }
 
   if(!/^[0-9]{10}$/.test(mobile)){
-    alert("कृपया सही 10 अंकों का मोबाइल नंबर डालें।");
+    alert("कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।");
     return;
   }
 
-  if(payment === ""){
-    alert("कृपया Payment ID / UTR डालें।");
+  if(utr === ""){
+    alert("कृपया Payment UTR / Transaction ID दर्ज करें।");
     return;
   }
 
-  alert(
-    "आपकी जानकारी प्राप्त हो गई है।\n\n" +
-    "Payment verification के बाद Course Access दिया जाएगा।"
-  );
-  
-window.location.href = "Success.html";
-}
+  /*
+    अभी हम जानकारी Success पेज पर भेज रहे हैं।
+    अगला चरण: इसी जगह Payment Verification
+    और Course Unlock सिस्टम जोड़ेंगे।
+  */
+
+  const url =
+    "Success.html" +
+    "?name=" + encodeURIComponent(name) +
+    "&mobile=" + encodeURIComponent(mobile) +
+    "&utr=" + encodeURIComponent(utr);
+
+  window.location.href = url;
+
+});
 
 </script>
 
